@@ -7,5 +7,5 @@ const app_1 = __importDefault(require("./app"));
 const database_1 = __importDefault(require("./database"));
 database_1.default.sync();
 console.log('Database running at 3306');
-app_1.default.listen(8000);
-console.log("Server running at port: 8000");
+app_1.default.listen(3001);
+console.log("Server running at port: 3001");

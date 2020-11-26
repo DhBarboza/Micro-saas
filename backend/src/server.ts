@@ -4,5 +4,5 @@ import database from './database';
 database.sync();
 console.log('Database running at 3306')
 
-app.listen(8000)
-console.log("Server running at port: 8000");
+app.listen(3001)
+console.log("Server running at port: 3001");
