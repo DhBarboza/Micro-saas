@@ -2,7 +2,8 @@ import baseAPI from './api';
 
 class ShortenerService {
     constructor() {
-        this.api = baseAPI('http://localhost:3001/');
+        //this.api = baseAPI('http://localhost:3001/');
+        this.api = baseAPI(process.env.REACT_APP_API);
     }
 
     async getLink(code) {

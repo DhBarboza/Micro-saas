@@ -3,7 +3,7 @@ import { Container, InputGroup, FormControl, Button, Alert, Spinner } from 'reac
 import Header from '../../components/Header';
 import { ContentContainer, Form, AdsBlock } from './styles';
 import ShortenerService from '../../services/shortenerService';
-
+import vars from '../../configs/vars'
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
@@ -64,18 +64,21 @@ class HomePage extends React.Component {
                             <Spinner animation="border" />
                         ) : (
                             code && (
+                                //</InputGroup>
+                                 //   <p>Acompanhe as estatísticas: https://brief.tk/{code}</p>
                                 <>
                                     <InputGroup className="mb-3">
                                         <FormControl
                                             autoFocus={true}
-                                            defaultValue={`https://brief.tk/${code}`}
+                                            //defaultValue={`https://brief.tk/${code}`}
+                                            defaultValue={vars.HOST_APP + code}
                                             ref={(input) => this.inputURL = input}
                                         />
                                         <InputGroup.Append>
                                             <Button variant="outline-secondary" onClick={() => this.copyToClipboard()}>Copiar</Button>
                                         </InputGroup.Append>
                                     </InputGroup>
-                                    <p>Acompanhe as estatísticas: https://brief.tk/{code}</p>
+                                    <p>Acompanhe as estatísticas: {vars.HOST_APP + code}</p>
                                 </>
                             )
                         )}
