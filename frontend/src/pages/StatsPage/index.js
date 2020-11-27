@@ -4,6 +4,9 @@ import { Container } from 'react-bootstrap';
 import ShortenerService from '../../services/shortenerService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StatsContainer, StatsRow, StatsBox, StatsBoxTitle } from './styles'
+import { parseISO, formatRelative } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 
 class StatsPage extends React.Component {
     constructor(props) {
@@ -22,6 +25,14 @@ class StatsPage extends React.Component {
         try {
             const service = new ShortenerService();
             const shortenedURL = await service.getStats(code);
+
+            const parsedDate = parseISO(shortenedURL.updatedAt);
+            const currentDate = new Date();
+            const relativeDate = formatRelative(parsedDate, currentDate, {
+                locale: ptBR,
+            });
+
+            shortenedURL.relativeDate = relativeDate;
 
             this.setState({ isLoading: false, shortenedURL })
         } catch (error) {
